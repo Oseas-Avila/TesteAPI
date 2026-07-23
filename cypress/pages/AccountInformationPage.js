@@ -20,7 +20,7 @@ class AccountInformationPage extends BasePage {
     company = "QA Automation",
     address1,
     address2 = "",
-    country = "Brazil",
+    country = "United States",
     state,
     city,
     zipcode,
@@ -30,7 +30,9 @@ class AccountInformationPage extends BasePage {
     cy.get("#last_name").type(lastName);
     cy.get("#company").type(company);
     cy.get("#address1").type(address1);
-    cy.get("#address2").type(address2);
+    if (address2) {
+      cy.get("#address2").type(address2);
+    }
     cy.get("#country").select(country);
     cy.get("#state").type(state);
     cy.get("#city").type(city);
