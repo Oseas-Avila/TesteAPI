@@ -16,6 +16,12 @@ class CheckoutPage extends CartPage {
     cy.contains("Address Details", { timeout: 10000 }).should("be.visible");
     return this;
   }
+
+  shouldContainProduct(productName) {
+    cy.contains("Review Your Order", { timeout: 10000 }).should("be.visible");
+    cy.contains("table", productName, { timeout: 10000 }).should("be.visible");
+    return this;
+  }
 }
 
 module.exports = CheckoutPage;

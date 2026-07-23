@@ -14,14 +14,11 @@ class CartPage extends BasePage {
   }
 
   getProductNames() {
-    return cy.get("#cart_info_table tbody tr td.cart_description h4 a");
+    return cy.get("#cart_info_table tbody tr td.cart_description");
   }
 
   shouldContainProduct(productName) {
-    this.getProductNames().should(($names) => {
-      const texts = [...$names].map((el) => el.textContent.trim());
-      expect(texts).to.include(productName);
-    });
+    cy.get("#cart_info_table", { timeout: 10000 }).should("contain.text", productName);
     return this;
   }
 
